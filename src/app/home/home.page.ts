@@ -11,38 +11,35 @@ export class HomePage {
 
   constructor() {}
 valorRange=0;
-medidasIniciais='';
+valorRangeDois=0;
+tiposImc=''
 alertButtons=['ok'];
-
+valorImc=0;
 medidasRadioFinal=''
-medidasFinais:number = 0 ;
 
 
+onIonChangeDois(ev:RangeCustomEvent){
+  this.valorRangeDois=parseInt(ev.detail.value.toString());
+}
 onIonChange(ev:RangeCustomEvent){
   this.valorRange=parseInt(ev.detail.value.toString());
 }
+verificasImc(){
+this.valorRangeDois=this.valorRangeDois/100;
 
-fazerConversao(){
-  if(this.medidasIniciais=='m' || this.medidasRadioFinal === 'km' ){
-  this.medidasFinais=this.valorRange/1000;
-    }
-    else if(this.medidasIniciais=='m' || this.medidasRadioFinal === 'm'){
-      this.medidasFinais=this.valorRange;
+this.valorImc = this.valorRange / (this.valorRangeDois * this.valorRangeDois)
 
-    }
-    else if(this.medidasIniciais=='m' || this.medidasRadioFinal === 'milhas'){
-      this.medidasFinais=this.valorRange * 0.00062137;
+if (this.valorImc < 18.5) {
+  this.tiposImc = 'Abaixo do peso';
+  } else if (this.valorImc >= 18.5 && this.valorImc <= 24.9) {
+  this.tiposImc = 'Peso saudável';
+  } else if (this.valorImc >= 25 && this.valorImc <= 29.9) {
+  this.tiposImc = 'Sobrepeso';
+  } else {
+  this.tiposImc = 'Obesidade';
+  }
+}
 
-    }
-    else if(this.medidasIniciais === 'km'|| this.medidasRadioFinal === 'km'){
-this.valorRange=this.valorRange;
-
-    }else if(this.medidasIniciais === 'km'  || this.medidasRadioFinal === 'm'){
-      this.medidasFinais=this.valorRange*1000;
-    }else if(this.medidasIniciais === 'km' || this.medidasRadioFinal === 'milhas')
-{
-  this.medidasFinais==this.valorRange * 0,6214;
-}    }
 }
 
 
