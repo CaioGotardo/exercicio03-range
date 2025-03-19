@@ -1,20 +1,52 @@
 <ion-header [translucent]="true">
   <ion-toolbar>
-    <ion-title>
-      Blank
-    </ion-title>
+    <ion-title> exercicio 02 </ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
-    <ion-toolbar>
-      <ion-title size="large">Blank</ion-title>
-    </ion-toolbar>
-  </ion-header>
+<div id="container">
 
-  <div id="container">
-    <strong>Ready to create an app?</strong>
-    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+
+
+  <h1>exercicio 2</h1>
+
+  <ion-alert
+  trigger="converter-valor"
+    header="valor Convertido"
+    message={{medidasFinais}}
+    [buttons]="alertButtons"
+    ></ion-alert>
+
+
+    <ion-range class="range"
+    (ionChange)="onIonChange($event)"
+    [ticks]="true"
+    [snaps]="true"
+    [min]="0"
+    [max]="100"
+    ></ion-range>
+
+    <ion-label>{{valorRange}}</ion-label>
+
+    <ion-radio-group value="medidasIniciais"  class="radioGroup"   [(ngModel)]="medidasIniciais">
+      <ion-radio value="m">m</ion-radio><br />
+      <ion-radio value="km">km </ion-radio><br />
+    </ion-radio-group>
+
+    <ion-radio-group value="medidasFinais"  class="radioGroup"   [(ngModel)]="medidasFinais">
+      <ion-radio value="milhas">milhas </ion-radio><br />
+      <ion-radio value="km">km </ion-radio><br />
+      <ion-radio value="m">m</ion-radio><br />
+
+    </ion-radio-group>
+
+
+    <ion-button expand="block" id="converter-valor"
+(click)="fazerConversao()">Converter</ion-button>
+
+
   </div>
+
+
 </ion-content>
