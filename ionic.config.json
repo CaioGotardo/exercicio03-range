@@ -1,0 +1,7 @@
+{
+  "name": "exercicio02-range",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
